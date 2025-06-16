@@ -1,42 +1,231 @@
-#root {
-  max-width: 1280px;
+.App {
+  max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 头部区域 */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  color: #2d3748;
+  margin-bottom: 8px;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #718096;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+/* 统计信息 */
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-counter {
+  color: #4a5568;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 8px;
+  background-color: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s ease;
+  border-radius: 10px;
+}
+
+/* 主内容区域 */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.hint {
+  margin-top: 15px;
+  color: #718096;
+  font-style: italic;
+  font-size: 0.9rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* 控制按钮区域 */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.control-btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.control-btn.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.control-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.control-btn.secondary {
+  background-color: #f7fafc;
+  color: #4a5568;
+  border: 2px solid #e2e8f0;
+}
+
+.control-btn.secondary:hover {
+  background-color: #edf2f7;
+  border-color: #cbd5e0;
+  transform: translateY(-1px);
+}
+
+.control-btn:active {
+  transform: translateY(0);
+}
+
+/* 键盘提示 */
+.keyboard-hints {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.keyboard-hints small {
+  color: #a0aec0;
+  font-size: 0.85rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+  .App {
+    padding: 15px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .controls {
+    gap: 10px;
+  }
+  
+  .control-btn {
+    min-width: 80px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .progress-bar {
+    width: 150px;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* 卡片容器 - 3D翻转效果 */
+.card-container {
+  width: 400px;
+  height: 250px;
+  perspective: 1000px;
+  margin: 20px auto;
+  cursor: pointer;
 }
 
+/* 卡片主体 */
 .card {
-  padding: 2em;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  border-radius: 15px;
 }
 
-.read-the-docs {
-  color: #888;
+/* 翻转状态 */
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* 卡片正面和背面的通用样式 */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 30px;
+  overflow: hidden;
+}
+
+/* 卡片正面（问题面）*/
+.card-front {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  border: 3px solid #004085;
+}
+
+/* 卡片背面（答案面）*/
+.card-back {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  transform: rotateY(180deg);
+  border: 3px solid #155724;
+}
+
+.card-front p,
+.card-back p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: white;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  max-height: 100%;
+  overflow-y: auto;
 }
