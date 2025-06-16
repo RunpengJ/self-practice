@@ -1,55 +1,55 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+ font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+ line-height: 1.5;
+ font-weight: 400;
 
-  color-scheme: light dark;
-  color: #213547;                      /* 改为深色文字 */
-  background-color: #f8f9fa;           /* 改为浅色背景 */
+ color-scheme: light dark;
+ color: #213547;                      /* Changed to dark text */
+ background-color: #f8f9fa;           /* Changed to light background */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ font-synthesis: none;
+ text-rendering: optimizeLegibility;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  font-weight: 500;
-  color: #007bff;                      /* 匹配你的主题色 */
-  text-decoration: inherit;
+ font-weight: 500;
+ color: #007bff;                      /* Match your theme color */
+ text-decoration: inherit;
 }
 a:hover {
-  color: #0056b3;
+ color: #0056b3;
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);  /* 渐变背景 */
+ margin: 0;
+ min-width: 320px;
+ min-height: 100vh;
+ background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);  /* Gradient background */
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  color: #333;                         /* 确保标题可见 */
+ font-size: 3.2em;
+ line-height: 1.1;
+ color: #333;                         /* Ensure title is visible */
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #007bff;           /* 匹配你的主题 */
-  color: white;
-  cursor: pointer;
-  transition: all 0.25s ease;
+ border-radius: 8px;
+ border: 1px solid transparent;
+ padding: 0.6em 1.2em;
+ font-size: 1em;
+ font-weight: 500;
+ font-family: inherit;
+ background-color: #007bff;           /* Match your theme */
+ color: white;
+ cursor: pointer;
+ transition: all 0.25s ease;
 }
 button:hover {
-  background-color: #0056b3;
-  transform: translateY(-1px);
+ background-color: #0056b3;
+ transform: translateY(-1px);
 }
 
-/* 移除暗色模式媒体查询或根据需要调整 */
+/* Removed dark mode media query or adjust as needed */
