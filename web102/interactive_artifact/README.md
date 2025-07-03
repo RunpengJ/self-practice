@@ -1,4 +1,4 @@
-# Web Development Project 4 - *Name of App Here*
+# Web Development Project 4 - *Interactive Artifacts*
 
 Submitted by: **Runpeng Jian**
 
