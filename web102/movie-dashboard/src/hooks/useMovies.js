@@ -44,9 +44,8 @@ export const useMovies = () => {
       }
     };
 
-    // Debounce search
-    const debounceTimer = setTimeout(loadMovies, 300);
-    return () => clearTimeout(debounceTimer);
+    // 立即执行，不需要防抖，因为搜索是手动触发的
+    loadMovies();
   }, [searchQuery]);
 
   // Filter movies
@@ -80,10 +79,13 @@ export const useMovies = () => {
     const sortedGenres = Object.entries(genreCount)
       .sort(([,a], [,b]) => b - a)
       .slice(0, 3)
-      .map(([genreId, count]) => ({
-        name: genreList.find(g => g.id === parseInt(genreId))?.name || 'Unknown',
-        count
-      }));
+      .map(([genreId, count]) => {
+        const genre = genreList.find(g => g.id === parseInt(genreId));
+        return {
+          name: genre ? genre.name : 'Unknown',
+          count
+        };
+      });
 
     return sortedGenres;
   }
