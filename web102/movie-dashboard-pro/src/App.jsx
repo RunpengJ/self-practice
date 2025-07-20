@@ -1,7 +1,6 @@
-// src/App.jsx
+// src/App.jsx - 消除React Router警告
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { queryClient } from './lib/queryClient'
 
 // Layout
@@ -19,7 +18,7 @@ import WatchlistPage from './pages/WatchlistPage'
 import ErrorBoundary from './components/common/ErrorBoundary'
 import NotFoundPage from './pages/NotFoundPage'
 
-// 路由配置
+// 路由配置 - 添加 future flags 消除警告
 const router = createBrowserRouter([
   {
     path: "/",
@@ -56,7 +55,11 @@ const router = createBrowserRouter([
       }
     ]
   }
-])
+], {
+  future: {
+    v7_startTransition: true, // 启用未来特性，消除警告
+  }
+})
 
 function App() {
   return (
@@ -64,14 +67,6 @@ function App() {
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
         <RouterProvider router={router} />
       </div>
-      
-      {/* 开发环境下显示 React Query DevTools */}
-      {import.meta.env.DEV && (
-        <ReactQueryDevtools 
-          initialIsOpen={false} 
-          buttonPosition="bottom-right"
-        />
-      )}
     </QueryClientProvider>
   )
 }

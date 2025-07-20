@@ -1,4 +1,4 @@
-// src/hooks/queries/useMovies.js
+// src/hooks/queries/useMovies.js - 添加调试信息的版本
 import { useQuery, useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
 import {
   fetchPopularMovies,
@@ -12,26 +12,48 @@ import {
   discoverMovies
 } from '../../utils/api'
 
+// 电影详情查询 - 添加详细调试
+export const useMovieDetails = (id) => {
+  console.log('useMovieDetails - Called with ID:', id)
+  
+  return useQuery({
+    queryKey: ['movie', 'details', id],
+    queryFn: async () => {
+      console.log('useMovieDetails - Fetching data for ID:', id)
+      try {
+        const result = await fetchMovieDetails(id)
+        console.log('useMovieDetails - Success:', result)
+        return result
+      } catch (error) {
+        console.error('useMovieDetails - Error:', error)
+        throw error
+      }
+    },
+    enabled: !!id,
+    staleTime: 1000 * 60 * 10, // 10分钟缓存
+    retry: (failureCount, error) => {
+      console.log('useMovieDetails - Retry attempt:', failureCount, error)
+      if (error.response?.status === 404) return false
+      return failureCount < 2
+    },
+    onError: (error) => {
+      console.error('useMovieDetails - Query Error:', error)
+    },
+    onSuccess: (data) => {
+      console.log('useMovieDetails - Query Success:', data)
+    }
+  })
+}
+
 // 基础电影数据查询
 export const useMovies = (page = 1) => {
   return useQuery({
     queryKey: ['movies', 'popular', page],
     queryFn: () => fetchPopularMovies(page),
     staleTime: 1000 * 60 * 5, // 5分钟
-    keepPreviousData: true
-  })
-}
-
-// 电影详情查询
-export const useMovieDetails = (id) => {
-  return useQuery({
-    queryKey: ['movie', 'details', id],
-    queryFn: () => fetchMovieDetails(id),
-    enabled: !!id,
-    staleTime: 1000 * 60 * 10, // 10分钟缓存
-    retry: (failureCount, error) => {
-      if (error.response?.status === 404) return false
-      return failureCount < 2
+    keepPreviousData: true,
+    onError: (error) => {
+      console.error('useMovies - Error:', error)
     }
   })
 }
@@ -42,6 +64,9 @@ export const useGenres = () => {
     queryKey: ['genres'],
     queryFn: fetchGenres,
     staleTime: 1000 * 60 * 60, // 1小时缓存，类型数据变化很少
+    onError: (error) => {
+      console.error('useGenres - Error:', error)
+    }
   })
 }
 
@@ -51,6 +76,9 @@ export const useTrendingMovies = (timeWindow = 'week') => {
     queryKey: ['movies', 'trending', timeWindow],
     queryFn: () => fetchTrendingMovies(timeWindow),
     staleTime: 1000 * 60 * 30, // 30分钟
+    onError: (error) => {
+      console.error('useTrendingMovies - Error:', error)
+    }
   })
 }
 
@@ -60,7 +88,10 @@ export const useUpcomingMovies = (page = 1) => {
     queryKey: ['movies', 'upcoming', page],
     queryFn: () => fetchUpcomingMovies(page),
     staleTime: 1000 * 60 * 60, // 1小时，即将上映数据更新不频繁
-    keepPreviousData: true
+    keepPreviousData: true,
+    onError: (error) => {
+      console.error('useUpcomingMovies - Error:', error)
+    }
   })
 }
 
@@ -70,7 +101,10 @@ export const useNowPlayingMovies = (page = 1) => {
     queryKey: ['movies', 'now_playing', page],
     queryFn: () => fetchNowPlayingMovies(page),
     staleTime: 1000 * 60 * 15, // 15分钟
-    keepPreviousData: true
+    keepPreviousData: true,
+    onError: (error) => {
+      console.error('useNowPlayingMovies - Error:', error)
+    }
   })
 }
 
@@ -80,7 +114,10 @@ export const useTopRatedMovies = (page = 1) => {
     queryKey: ['movies', 'top_rated', page],
     queryFn: () => fetchTopRatedMovies(page),
     staleTime: 1000 * 60 * 60, // 1小时，评分最高的数据比较稳定
-    keepPreviousData: true
+    keepPreviousData: true,
+    onError: (error) => {
+      console.error('useTopRatedMovies - Error:', error)
+    }
   })
 }
 
@@ -91,7 +128,10 @@ export const useSearchMovies = (query, page = 1) => {
     queryFn: () => searchMovies(query, page),
     enabled: !!query && query.length > 0,
     staleTime: 1000 * 60 * 5, // 5分钟
-    keepPreviousData: true
+    keepPreviousData: true,
+    onError: (error) => {
+      console.error('useSearchMovies - Error:', error)
+    }
   })
 }
 
@@ -104,7 +144,10 @@ export const useInfiniteMovies = (searchQuery = '') => {
     getNextPageParam: (lastPage) => 
       lastPage.page < lastPage.total_pages ? lastPage.page + 1 : undefined,
     staleTime: 1000 * 60 * 5,
-    keepPreviousData: true
+    keepPreviousData: true,
+    onError: (error) => {
+      console.error('useInfiniteMovies - Error:', error)
+    }
   })
 }
 
@@ -115,7 +158,10 @@ export const useDiscoverMovies = (filters = {}) => {
     queryFn: () => discoverMovies(filters),
     enabled: Object.keys(filters).length > 0,
     staleTime: 1000 * 60 * 10,
-    keepPreviousData: true
+    keepPreviousData: true,
+    onError: (error) => {
+      console.error('useDiscoverMovies - Error:', error)
+    }
   })
 }
 
@@ -135,7 +181,10 @@ export const useChartData = (movies, genres) => {
       }
     },
     enabled: !!(movies && movies.length > 0 && genres && genres.length > 0),
-    staleTime: 1000 * 60 * 10
+    staleTime: 1000 * 60 * 10,
+    onError: (error) => {
+      console.error('useChartData - Error:', error)
+    }
   })
 }
 
