@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Web Development Project 7 - *Fantasy RPG Adventure Party*
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Submitted by: **Runpeng Jian**
 
-## Available Scripts
+This web app: **Manage your party members and track team balance**
 
-In the project directory, you can run:
+Time spent: **2** hours spent in total
 
-### `npm start`
+## Required Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The following **required** functionality is completed:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+- [x] **The web app contains a page that features a create form to add a new crewmate**
+  - Users can name the crewmate
+  - Users can set the crewmate’s attributes by clicking on one of several values
+- [x] **The web app includes a summary page of all the user’s added crewmatese**
+  -  The web app contains a summary page dedicated to displaying all the crewmates the user has made so far
+  -  The summary page is sorted by creation date such that the most recently created crewmates appear at the top
+- [x] **A previously created crewmate can be updated from the list of crewmates in the summary page**
+  - Each crewmate has an edit button that will take users to an update form for the relevant crewmate
+  - Users can see the current attributes of their crewmate on the update form
+  - After editing the crewmate's attribute values using the form, the user can immediately see those changes reflected in the update form and on the summary page 
+- [x] **A previously created crewmate can be deleted from the crewmate list**
+  - Using the edit form detailed in the previous _crewmates can be updated_ feature, there is a button that allows users to delete that crewmate
+  - After deleting a crewmate, the crewmate should no longer be visible in the summary page
+  - [x] **Each crewmate has a direct, unique URL link to an info page about them**
+    - Clicking on a crewmate in the summary page navigates to a detail page for that crewmate
+    - The detail page contains extra information about the crewmate not included in the summary page
+    - Users can navigate to to the edit form from the detail page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The following **optional** features are implemented:
 
-### `npm run build`
+- [ ] A crewmate can be given a category upon creation which restricts their attribute value options
+  - e.g., a Dungeons and Dragons class or a development team role (project manager, product owner, etc.)
+  - User can choose a `category` option to describe their crewmate before any attributes are specified
+  - Based on the category value, users are allowed to access only a subset of the possible attributes
+- [x] A section of the summary page, displays summary statistics about a user’s crew on their crew page
+  - e.g., the percent of members with a certain attribute 
+- [x] The summary page displays a custom “success” metric about a user’s crew which changes the look of the crewmate list
+  - e.g., a pirate crew’s predicted success at commandeering a new galley
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The following **additional** features are implemented:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [ ] List anything else that you added to improve the site's functionality!
 
-### `npm run eject`
+## Video Walkthrough
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Here's a walkthrough of implemented user stories:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src='public/walkthrough1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<!-- Replace this with whatever GIF tool you used! -->
+GIF created with ScreenToGif  
+<!-- Recommended tools:
+[Kap](https://getkap.co/) for macOS
+[ScreenToGif](https://www.screentogif.com/) for Windows
+[peek](https://github.com/phw/peek) for Linux. -->
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Notes
 
-## Learn More
+Describe any challenges encountered while building the app.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    Copyright [yyyy] [name of copyright owner]
 
-### Code Splitting
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+        http://www.apache.org/licenses/LICENSE-2.0
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
