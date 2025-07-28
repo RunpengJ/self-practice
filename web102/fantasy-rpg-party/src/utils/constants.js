@@ -69,12 +69,20 @@ export const ALIGNMENTS = {
   }
 }
 
-// Preset avatars
+// Preset avatars - using more reliable sources
 export const AVATAR_PRESETS = [
-  'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=150',
-  'https://images.unsplash.com/photo-1566492031773-4f4e44671d66?w=150',
-  'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=150',
-  'https://images.unsplash.com/photo-1566492031773-4f4e44671d66?w=150'
+  'https://api.dicebear.com/7.x/avataaars/svg?seed=warrior&backgroundColor=b6e3f4',
+  'https://api.dicebear.com/7.x/avataaars/svg?seed=mage&backgroundColor=c084fc',
+  'https://api.dicebear.com/7.x/avataaars/svg?seed=rogue&backgroundColor=34d399',
+  'https://api.dicebear.com/7.x/avataaars/svg?seed=healer&backgroundColor=fbbf24',
+  'https://api.dicebear.com/7.x/adventurer/svg?seed=knight&backgroundColor=ef4444',
+  'https://api.dicebear.com/7.x/adventurer/svg?seed=wizard&backgroundColor=8b5cf6',
+  'https://api.dicebear.com/7.x/adventurer/svg?seed=archer&backgroundColor=10b981',
+  'https://api.dicebear.com/7.x/adventurer/svg?seed=cleric&backgroundColor=f59e0b',
+  'https://api.dicebear.com/7.x/personas/svg?seed=fighter&backgroundColor=dc2626',
+  'https://api.dicebear.com/7.x/personas/svg?seed=sorcerer&backgroundColor=7c3aed',
+  'https://api.dicebear.com/7.x/personas/svg?seed=ranger&backgroundColor=059669',
+  'https://api.dicebear.com/7.x/personas/svg?seed=paladin&backgroundColor=d97706'
 ]
 
 // Team balance evaluation rules
